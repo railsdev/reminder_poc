@@ -15,3 +15,5 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
 end
+gem 'ice_cube'
+gem 'annotate', ">=2.5.0"

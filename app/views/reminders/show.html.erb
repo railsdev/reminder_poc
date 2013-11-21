@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reminder.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @reminder.name %>
+</p>
+
+<p>
+  <strong>Fq type:</strong>
+  <%= @reminder.fq_type %>
+</p>
+
+<p>
+  <strong>Fq interval:</strong>
+  <%= @reminder.fq_interval %>
+</p>
+
+<p>
+  <strong>Fq monthly interval:</strong>
+  <%= @reminder.fq_monthly_interval %>
+</p>
+
+<p>
+  <strong>Fq time:</strong>
+  <%= @reminder.fq_time %>
+</p>
+
+<%= link_to 'Edit', edit_reminder_path(@reminder) %> |
+<%= link_to 'Back', reminders_path %>

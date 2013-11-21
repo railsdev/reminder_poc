@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  name: MyString
+  fq_type: MyString
+  fq_interval: 1
+  fq_monthly_interval: 1
+  fq_time: 2013-11-21 17:37:44
+
+two:
+  user_id: 1
+  name: MyString
+  fq_type: MyString
+  fq_interval: 1
+  fq_monthly_interval: 1
+  fq_time: 2013-11-21 17:37:44
