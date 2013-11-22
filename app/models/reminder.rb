@@ -22,7 +22,7 @@ class Reminder < ActiveRecord::Base
   include IceCube
   include ActsAsTree
 
-  acts_at_tree order: 'name'
+  acts_as_tree order: 'name'
 
   has_many :scheduled_reminders
 
