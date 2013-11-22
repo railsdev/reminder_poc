@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122101113) do
+ActiveRecord::Schema.define(version: 20131122114042) do
 
   create_table "reminders", force: true do |t|
     t.integer  "user_id"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20131122101113) do
     t.string   "fq_type"
     t.integer  "interval"
     t.integer  "fq_month"
-    t.datetime "fq_time"
+    t.time     "fq_time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"

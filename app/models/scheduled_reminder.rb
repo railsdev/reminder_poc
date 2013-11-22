@@ -11,5 +11,5 @@
 #
 
 class ScheduledReminder < ActiveRecord::Base
-  belong_to :reminder
+  belongs_to :reminder
 end
