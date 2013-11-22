@@ -11,17 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121122148) do
+ActiveRecord::Schema.define(version: 20131122101113) do
 
   create_table "reminders", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.string   "fq_type"
-    t.integer  "fq_interval"
-    t.integer  "fq_monthly_interval"
+    t.integer  "interval"
+    t.integer  "fq_month"
     t.datetime "fq_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "scheduled_reminders_count"
+    t.string   "status",                    default: "unscheduled"
+    t.integer  "fq_day"
+    t.datetime "start_time"
   end
 
   create_table "scheduled_reminders", force: true do |t|

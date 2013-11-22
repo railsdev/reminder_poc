@@ -17,3 +17,4 @@ group :development do
 end
 gem 'ice_cube'
 gem 'annotate', ">=2.5.0"
+gem 'acts_as_tree'
