@@ -31,6 +31,10 @@ class Reminder < ActiveRecord::Base
     set_up_new_reminder_schedules
   }
 
+  def as_json(options={})
+    self.attributes.symbolize_keys.extract!(:user_id, :name, :fq_type, :interval, :fq_month, :fq_time, :fq_day, :status, :start_time)
+  end
+
   private
 
   def clean_all_scheduled_reminders

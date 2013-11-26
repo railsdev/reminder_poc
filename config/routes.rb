@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  get "rest_client", to: 'rest_client#new'
+  post "rest_client", to: 'rest_client#create'
   resources :reminders
 
   root :to => "home#index"

@@ -18,3 +18,8 @@ end
 gem 'ice_cube'
 gem 'annotate', ">=2.5.0"
 gem 'acts_as_tree'
+gem "uniform_notifier"
+#gem 'multi_json'
+#gem 'yajl-ruby'
+gem 'rest-client'
+

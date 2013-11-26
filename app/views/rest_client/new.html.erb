@@ -1,0 +1,90 @@
+
+<br/><br/>
+<%= form_tag '/rest_client' do %>
+  <!-- API Method : <%#= select_tag :req_method, [['Get','get'], ['Post', 'post'], ['Put', 'put'], ['Delete', 'delete']]%> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <form class="form-horizontal span6">
+          <fieldset>
+            <legend>Rest Client</legend>
+
+            <div class="control-group">
+              <label class="control-label">Request URL</label>
+              <div class="controls">
+                <%= text_field_tag :req_url, params[:req_url], class: 'input-block-level span9' %>
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <label class="control-label">Reuqest Method</label>
+              <div class="controls">
+                <div class="row-fluid">
+                  <div class="span12">
+                    <%= select_tag :req_method, options_for_select([['Get','get'], ['Post', 'post']]), class: "input-block-level" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br/>
+
+            <div class="control-group" id='req_body_wrapper' style='display:none'>
+              <label class="control-label">Request Body</label>
+              <div class="controls">
+                <%= text_area_tag :req_body, params[:req_body] %>
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <label class="control-label">Client UUID</label>
+              <div class="controls">
+                <div class="row-fluid">
+                  <div class="span12">
+                    <%= text_area_tag :client_uuid, params[:client_uuid] %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br/>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn">Cancel</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+<% if @resp %>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        Status Code: <%= @resp.code%>
+      </div>
+      <div class="span12">
+        Response: <%= @resp.to_s.inspect %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script>
+  $('#req_method').on('change', function(){
+    if($(this).val()=='post'){
+      $('#req_body_wrapper').show();
+      }else{
+      $('#req_body_wrapper').hide();
+    }
+  })
+
+  <% if params[:req_method]%>
+    $('#req_method').val('<%= params[:req_method] %>').change();
+  <% end %>
+</script>

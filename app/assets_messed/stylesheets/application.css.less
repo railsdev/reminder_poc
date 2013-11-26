@@ -9,6 +9,21 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap
  *= require_tree .
- */
+*/
+
+//@import "twitter/bootstrap/mixins.less";
+
+.user_info_nav .caret {
+  //.opacity(100);
+  color: white;
+}
+
+
+table th.actions_column {
+  width: 190px;
+}
+
+.bold {
+  font-weight: bold;
+}
