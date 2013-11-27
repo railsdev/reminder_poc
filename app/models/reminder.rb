@@ -54,7 +54,9 @@ class Reminder < ActiveRecord::Base
     schedule = Schedule.new(start_time) do |s|
       s.add_recurrence_rule(occurrunce_rule) 
     end 
-    occurrences = schedule.occurrences( start_time + 1.month )
+    occurrences = schedule.occurrences( start_time + 1.month ) if ['Hourly', 'Daily', 'Weekly'].include? self.fq_type
+    occurrences = schedule.occurrences( start_time + 3.month ) if self.fq_type == 'Monthly'
+    occurrences = schedule.occurrences( start_time + 3.year) if self.fq_type == 'Yearly'
 
     if occurrences.size > 0
       # Create scheduled occurrences
