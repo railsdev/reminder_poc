@@ -1,4 +1,4 @@
-ScheduleReminder.destroy_all
+ScheduledReminder.destroy_all
 Reminder.destroy_all
 # Daily Reminders
 #
