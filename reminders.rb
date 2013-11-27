@@ -1,4 +1,5 @@
-
+ScheduleReminder.destroy_all
+Reminder.destroy_all
 # Daily Reminders
 #
 Reminder.create(fq_type: 'Daily', fq_time: Time.now + 4.hours )
