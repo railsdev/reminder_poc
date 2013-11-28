@@ -30,5 +30,12 @@ class DailyReminderTest < ActiveSupport::TestCase
       faulty_scheduled_reminders.must_be_empty
     end
 
+    def test_updation_of_reminder
+      @reminder.update( fq_time: Time.now + 2.hours )
+      test_daily_reminders_type
+      test_last_schedule_of_reminder
+      test_count_of_scheduled_reminders
+      test_different_of_time_between_scheduled_reminders
+    end
 
 end
