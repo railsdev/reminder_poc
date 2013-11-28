@@ -2,20 +2,20 @@
 #
 # Table name: reminders
 #
-#  id                        :integer          not null, primary key
-#  user_id                   :integer
-#  name                      :string(255)
-#  fq_type                   :string(255)
-#  interval                  :integer
-#  fq_month                  :integer
-#  fq_time                   :time
-#  created_at                :datetime
-#  updated_at                :datetime
-#  parent_id                 :integer
-#  scheduled_reminders_count :integer
-#  status                    :string(255)      default("unscheduled")
-#  fq_day                    :integer
-#  start_time                :datetime
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  name             :string(255)
+#  fq_type          :string(255)
+#  interval         :integer
+#  fq_month         :integer
+#  fq_time          :datetime
+#  created_at       :datetime
+#  updated_at       :datetime
+#  parent_id        :integer
+#  status           :string(255)      default("unscheduled")
+#  fq_day           :integer
+#  start_time       :datetime
+#  last_schedule_on :datetime
 #
 
 class Reminder < ActiveRecord::Base
@@ -42,7 +42,7 @@ class Reminder < ActiveRecord::Base
   end 
 
   def set_up_new_reminder_schedules
-    
+
     if having_natural_interval
       # Generate IceCube Schedule      
       #
@@ -61,9 +61,9 @@ class Reminder < ActiveRecord::Base
     if occurrences.size > 0
       # Create scheduled occurrences
       #
-    
+
       line_up_all_reminders(occurrences)
-      update_reminder_count(scheduled_reminders.count)
+      #update_reminder_count(scheduled_reminders.count)
       update_status('scheduled')
 
     end
@@ -96,6 +96,7 @@ class Reminder < ActiveRecord::Base
     #return scheduled_occurrences
   end
 
+  ### Deprecated!!!!
   def update_reminder_count(r_count)
     update_column(:scheduled_reminders_count, r_count)
   end
