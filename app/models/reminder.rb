@@ -24,7 +24,7 @@ class Reminder < ActiveRecord::Base
 
   acts_as_tree order: 'name'
 
-  has_many :scheduled_reminders
+  has_many :scheduled_reminders, dependent: :destroy
 
   after_save {
     clean_all_scheduled_reminders
@@ -56,14 +56,14 @@ class Reminder < ActiveRecord::Base
     end 
     occurrences = schedule.occurrences( start_time + 1.month ) if ['Hourly', 'Daily', 'Weekly'].include? self.fq_type
     occurrences = schedule.occurrences( start_time + 3.month ) if self.fq_type == 'Monthly'
-    occurrences = schedule.occurrences( start_time + 3.year) if self.fq_type == 'Yearly'
+    occurrences = schedule.occurrences( start_time + 3.year)   if self.fq_type == 'Yearly'
 
     if occurrences.size > 0
       # Create scheduled occurrences
       #
 
       line_up_all_reminders(occurrences)
-      #update_reminder_count(scheduled_reminders.count)
+      update_column(:last_schedule_on, scheduled_reminders.order(:run_at).last.run_at)
       update_status('scheduled')
 
     end
