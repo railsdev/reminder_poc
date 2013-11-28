@@ -1,13 +1,18 @@
 require "test_helper"
 
-class WeeklyReminderTest < ActiveSupport::TestCase
+class EveryXYearsReminderTest < ActiveSupport::TestCase
 
     def setup
-      @reminder = Reminder.create( fq_type: 'Weekly', fq_day: 3, fq_time: Time.now )
+      @reminder = Reminder.create( fq_type:    'Every X years', 
+                                   fq_day:     3, 
+                                   fq_time:    Time.now,
+                                   fq_month:   6,
+                                   start_time: Time.now,
+                                   interval:   2 )
     end
 
     def test_daily_reminders_type
-      assert_equal "Weekly", @reminder.fq_type
+      assert_equal "Yearly", @reminder.fq_type
       assert_equal "scheduled", @reminder.status
     end
 
@@ -23,7 +28,12 @@ class WeeklyReminderTest < ActiveSupport::TestCase
 
     # TODO: Bad way.. need to refactor
     def test_day_of_scheduled_reminders
-      @reminder.scheduled_reminders.each{|x| assert_equal x.run_at.wday, @reminder.fq_day }
+      @reminder.scheduled_reminders.each{|x| assert_equal x.run_at.mday, @reminder.fq_day }
+    end
+
+    # TODO: Bad way.. need to refactor
+    def test_month_of_scheduled_reminders
+      @reminder.scheduled_reminders.each{|x| assert_equal x.run_at.month, @reminder.fq_month }
     end
 
     # TODO: Bad way.. need to refactor
@@ -33,8 +43,7 @@ class WeeklyReminderTest < ActiveSupport::TestCase
     end
 
     def test_different_of_time_between_scheduled_reminders
-      faulty_scheduled_reminders = @reminder.scheduled_reminders.to_a.each_cons(2).select{|a, b| (b.run_at - a.run_at).to_i.seconds != 1.week.seconds }
-      faulty_scheduled_reminders.must_be_empty
+      @reminder.scheduled_reminders.order('run_at').to_a.each_cons(2).each{|a, b| assert_equal (b.run_at.year - a.run_at.year ), @reminder.interval }
     end
 
 

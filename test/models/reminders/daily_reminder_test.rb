@@ -3,7 +3,7 @@ require "test_helper"
 class DailyReminderTest < ActiveSupport::TestCase
 
     def setup
-      @reminder = Reminder.create( :fq_type => 'Daily', :fq_time => Time.now )
+      @reminder = Reminder.create( fq_type: 'Daily', fq_time: Time.now )
     end
 
     def test_daily_reminders_type
