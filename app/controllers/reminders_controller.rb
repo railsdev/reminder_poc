@@ -65,13 +65,13 @@ class RemindersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reminder
-      @reminder = Reminder.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_reminder
+    @reminder = Reminder.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def reminder_params
-      params.require(:reminder).permit(:user_id, :name, :fq_type, :fq_interval, :fq_monthly_interval, :fq_time)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def reminder_params
+    params.require(:reminder).permit(:user_id, :name, :fq_type, :fq_interval, :fq_monthly_interval, :fq_time)
+  end
 end

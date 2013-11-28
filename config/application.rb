@@ -10,8 +10,8 @@ module Myapp
   class Application < Rails::Application
 
     config.generators do |g|
-      
-      
+      g.test_framework :mini_test, :spec => true, :fixture => true
+      g.fixture_replacement :factory_girl, :dir => "test/factories" 
     end
 
     # Settings in config/environments/* take precedence over those specified here.

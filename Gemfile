@@ -22,4 +22,8 @@ gem "uniform_notifier"
 #gem 'multi_json'
 #gem 'yajl-ruby'
 gem 'rest-client'
-
+group :development, :test do
+  gem 'minitest-rails'
+  gem 'factory_girl_rails'
+end
+gem 'faker', :group => :test

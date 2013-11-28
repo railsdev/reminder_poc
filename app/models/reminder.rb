@@ -82,7 +82,6 @@ class Reminder < ActiveRecord::Base
     rule = rule.month_of_year(fq_month).day_of_month(fq_day) if fq_type == 'Yearly'
 
     # Add time to the final rule
-    # TODO: Need to change fq_time type from time to datetime. So that it can hold UTC datetime value. Currently it is not converting the time into UTC which leads to wrong scheduling
     rule.hour_of_day(fq_time.hour).minute_of_hour(fq_time.min) unless fq_type == 'Hourly' # Because time in hourly case, is handled by start_time
 
     return rule
