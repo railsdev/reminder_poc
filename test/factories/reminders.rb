@@ -27,4 +27,29 @@ FactoryGirl.define do
     fq_month  4 # April
     fq_day    20 # 20th day of April
   end
+
+  factory :every_x_hours, parent: :reminder do 
+    fq_type     "Every X hours"
+    start_time  { Time.now }
+  end
+
+  factory :every_x_days, parent: :reminder do 
+    fq_type     "Every X days"
+    start_time  { Time.now }
+  end
+
+  factory :every_x_weeks, parent: :reminder do 
+    fq_type     "Every X weeks"
+    start_time  { Time.now }
+  end
+
+  factory :every_x_months, parent: :reminder do 
+    fq_type     "Every X months"
+    start_time  { Time.now }
+  end
+
+  factory :every_x_years, parent: :reminder do 
+    fq_type     "Every X years"
+    start_time  { Time.now }
+  end
 end
